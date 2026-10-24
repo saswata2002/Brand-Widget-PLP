@@ -1,4 +1,4 @@
-/* Brand Widget PLP — iteration 9 (/v9/) — a copy of iteration 8 that asks screen size first, then budget: a copy of iteration 7 with an Apply button on the last question: a copy of iteration 6 whose indicator shows the selected answer (one dot per option): a copy of iteration 5 with the picker's top row moved to the bottom, Figma 405:26679 spacing, no personalizing beat and no picks rail (the widget stays on the last question): iteration 4 without the picker's footer (a choice moves on by itself; Back + Skip at the top, a shorter panel while it asks): iteration 3's TV flow, but the TV brand widget asks first: a three-step picker (budget → screen size → picture), a "Personalizing for you" beat, then each brand's best match and a re-sorted grid (phone and fitness reveal directly, as in 1); asset paths point to ../assets/ */
+/* Brand Widget PLP — iteration 9 (/v9/) — a copy of iteration 8 that asks TV type first, then screen size, then budget: a copy of iteration 7 with an Apply button on the last question: a copy of iteration 6 whose indicator shows the selected answer (one dot per option): a copy of iteration 5 with the picker's top row moved to the bottom, Figma 405:26679 spacing, no personalizing beat and no picks rail (the widget stays on the last question): iteration 4 without the picker's footer (a choice moves on by itself; Back + Skip at the top, a shorter panel while it asks): iteration 3's TV flow, but the TV brand widget asks first: a three-step picker (budget → screen size → picture), a "Personalizing for you" beat, then each brand's best match and a re-sorted grid (phone and fitness reveal directly, as in 1); asset paths point to ../assets/ */
 /* Android: phone GPUs pay heavily for animated blur filters and backdrop blurs, so on Android the
    motion keeps its timing and curves but drops the blur (transform + opacity only); html.is-android
    switches the CSS backdrop blurs off. Nothing changes on iPhone or desktop. */
@@ -1585,18 +1585,18 @@ const PP = (() => {
      each brand's best match. Skip (first step) shows the brand rail as in 3. */
   // opts: [label, value, hint, [photo, size]] — each answer is a real noon TV, cut out (assets/tv/*.webp), at a relative size
   const QUESTIONS = [
-    // iteration 9: screen size first, then budget
+    // iteration 9: TV type first, then screen size, then budget
+    // one TV whose picture wipes from one screen type to the next as the ruler moves (single + screen):
+    // [screen image (assets/tv/screen-*.webp), ambient glow colour, the signature pulse when it lands]
+    { key: 'tech',   label: 'Picture', q: 'Select your TV type', sub: 'Swipe through, tap the TV to choose', def: 0, single: 'qled65', screen: true,
+      opts: [['No preference', null, 'Show me everything', ['any', 'rgba(242,176,64,.58)', '']], ['QLED', 'QLED', 'Bright, vivid colour', ['qled', 'rgba(118,88,255,.55)', 'saturate(1.28)']],
+             ['Mini LED', 'Mini LED', 'Brightest HDR', ['mini', 'rgba(40,200,205,.55)', 'brightness(1.14)']], ['OLED', 'OLED', 'Perfect blacks', ['oled', 'rgba(255,90,140,.5)', 'contrast(1.18) saturate(1.06)']]] },
     // one TV that morphs to size as the ruler moves (single), instead of a row of answers
     { key: 'size',   label: 'Screen',  q: 'Which screen size?', sub: 'Swipe to resize, tap the TV to choose', def: 1, single: 'qled65',
       opts: [['Up to 50"', [0, 50], 'Bedrooms & kitchens', 0.56], ['55"', [51, 60], 'Most popular', 0.68], ['65"', [61, 70], 'Living rooms', 0.84], ['75" & up', [71, 200], 'Home cinema', 1]] },
     { key: 'budget', label: 'Budget',  q: 'What’s your budget?', sub: 'Tap one to choose, or swipe to browse', def: 1,
       opts: [['Under  1,500', [0, 1500], 'Great value', ['crystal', 0.86]], [' 1,500 – 3,000', [1500, 3000], 'Most popular', ['q8f', 0.9]],
              [' 3,000 – 5,000', [3000, 5000], 'Premium', ['bravia', 0.95]], [' 5,000+', [5000, 1e9], 'Top of the range', ['neoqled', 1]]] },
-    // one TV whose picture wipes from one screen type to the next as the ruler moves (single + screen):
-    // [screen image (assets/tv/screen-*.webp), ambient glow colour, the signature pulse when it lands]
-    { key: 'tech',   label: 'Picture', q: 'Select your TV type', sub: 'Swipe through, tap the TV to choose', def: 0, single: 'qled65', screen: true,
-      opts: [['No preference', null, 'Show me everything', ['any', 'rgba(242,176,64,.58)', '']], ['QLED', 'QLED', 'Bright, vivid colour', ['qled', 'rgba(118,88,255,.55)', 'saturate(1.28)']],
-             ['Mini LED', 'Mini LED', 'Brightest HDR', ['mini', 'rgba(40,200,205,.55)', 'brightness(1.14)']], ['OLED', 'OLED', 'Perfect blacks', ['oled', 'rgba(255,90,140,.5)', 'contrast(1.18) saturate(1.06)']]] },
   ];
   const PAGE_DX = 32;   // iteration 6: a shorter push (was 44)
   const PAGE = spr(0.5, 1), SNAP = spr(0.3, 0.86);
