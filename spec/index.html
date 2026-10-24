@@ -307,7 +307,7 @@ window.SpecKit = (() => {
    states {name: async (doc, win, eng) => …} · prep {sceneId: stateName|null} · fire {sceneId: (doc, win) => …} */
 window.SPEC = (() => {
   const { springFn, firstT, S, C, H, rowEnd, sceneEnd, wait: realWait } = SpecKit;
-  const PATHS = { 1: '/', 2: '/v2/', 3: '/v3/', 4: '/v4/', 5: '/v5/', 6: '/v6/', 7: '/v7/', 8: '/v8/', 9: '/v9/' };
+  const PATHS = { 1: '/', 2: '/v2/', 3: '/v3/', 4: '/v4/', 5: '/v5/', 6: '/v6/', 7: '/v7/', 8: '/v8/', 9: '/v9/', 10: '/v10/' };
   const SPR = {
     pp:    { name: 'Handoff spring', w: 16.75, z: 0.81, src: 'PP — ProtoPie handoff r/8e30fe8e' },
     title: { name: 'Heading spring', w: 11.5,  z: 0.6,  src: 'LINE — fitted to ref_widget.mp4' },
@@ -513,7 +513,7 @@ window.SPEC = (() => {
     ];
     return { rows, beats };
   }
-  const ITER = { 1: 'Iteration 01', 2: 'Iteration 02 · card rises', 3: 'Iteration 03', 4: 'Iteration 04', 5: 'Iteration 05 · copy of 04', 6: 'Iteration 06 · copy of 05', 7: 'Iteration 07 · copy of 06', 8: 'Iteration 08 · copy of 07', 9: 'Iteration 09 · copy of 08' };
+  const ITER = { 1: 'Iteration 01', 2: 'Iteration 02 · card rises', 3: 'Iteration 03', 4: 'Iteration 04', 5: 'Iteration 05 · copy of 04', 6: 'Iteration 06 · copy of 05', 7: 'Iteration 07 · copy of 06', 8: 'Iteration 08 · copy of 07', 9: 'Iteration 09 · copy of 08', 10: 'Iteration 10 · copy of 09' };
 
   // states, fast-forwarded on the virtual clock from a fresh load
   const ST = {
